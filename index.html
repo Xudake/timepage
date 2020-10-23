@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        * {margin: 0;padding: 0;}
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        iframe {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+        .tips {
+            position: absolute;
+            top: 30%;
+            width: 100%;
+            text-align: center;
+            color: #376ebc;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="iframe_p" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" name="mapFrame" scrolling="no" frameborder="0"></iframe>
+</body>
+</html>
+<script>
+    function getQueryString(name) {
+       var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+       var r = window.location.search.substr(1).match(reg);
+       if(r != null) {
+             return decodeURIComponent(r[2]);
+       }
+       return '';
+    }
+
+    if(getQueryString('p_title')){
+        document.title = getQueryString('p_title');
+    }
+
+    if(getQueryString('p_url')){
+        document.getElementById('iframe_p').src = decodeURIComponent(getQueryString('p_url'));
+        document.getElementById('iframe_p').style.display = 'block'
+    }else{
+        document.writeln('<div class="tips">链接地址未配置</div>')
+    }
+</script>
