@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=2.0 ,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <style>
@@ -50,5 +51,17 @@
         document.getElementById('iframe_p').style.display = 'block'
     }else{
         document.writeln('<div class="tips">链接地址未配置</div>')
+    }
+    
+
+    let ifram = document.getElementById('iframe_p');
+    if (navigator.userAgent.match(/iPad|iPhone/i)) {
+      let iframe_box = document.getElementById('iframe-box');
+      iframe_box.style.width = 100 + '%';
+      iframe_box.style.overflowX = 'hidden';
+      iframe_box.style.overflowY = 'scroll';
+      iframe_box.style.webkitOverflowScrolling = 'touch';
+      ifram.setAttribute('scrolling', 'no');
+      iframe_box.appendChild(ifram)
     }
 </script>
