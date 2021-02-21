@@ -69,8 +69,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 1360 * 100 + "px";
+    </script>
     <meta charset="UTF-8">
-<!--     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>时间</title>
     <style>
         * {
@@ -96,16 +99,17 @@
         }
 
         #time .day {
-            font-size: 40px;
+            font-size: 0.4rem;
         }
 
         #time .t {
-            font-size: 160px;
+            font-size: 1.6rem;
         }
 
         #count {
             text-align: center;
-            font-size: 40px;
+            font-size: 0.4rem;
+            color: pink;
         }
     </style>
 </head>
@@ -140,6 +144,9 @@
         var hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = parseInt((mss % (1000 * 60)) / 1000);
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
         return days + "天" + hours + "小时" + minutes + "分钟" + seconds + "秒";
     }
 
